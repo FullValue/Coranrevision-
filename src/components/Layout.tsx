@@ -1,5 +1,6 @@
 import { NavLink, Outlet, Link } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
+import NotificationBell from './NotificationBell';
 
 /** En-tête + zone de contenu. La navigation dépend du rôle. */
 export default function Layout() {
@@ -45,6 +46,7 @@ export default function Layout() {
                 </NavLink>
               </>
             )}
+            <NotificationBell />
             <button
               onClick={signOut}
               className="ml-1 rounded-lg px-3 py-1.5 text-sm text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-800"
