@@ -101,7 +101,7 @@ export default function Revision() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-end justify-between gap-3">
+      <div className="flex flex-wrap items-end justify-between gap-x-3 gap-y-2">
         <h1 className="text-xl font-medium text-neutral-900">
           {firstName ? `Salam, ${firstName}` : 'Ma révision'}
         </h1>
