@@ -1,6 +1,6 @@
 import type { DailyLog } from '../lib/types';
 import { surahLabel } from '../data/quran';
-import { formatLongDate } from '../lib/dates';
+import { formatLongDateWithWeekday } from '../lib/dates';
 
 /** Historique des révisions : date, « de X à Y », note. */
 export default function LogsHistory({ logs }: { logs: DailyLog[] }) {
@@ -18,7 +18,7 @@ export default function LogsHistory({ logs }: { logs: DailyLog[] }) {
         <li key={log.id} className="flex flex-col gap-0.5 py-3">
           <div className="flex items-center justify-between gap-3">
             <span className="text-sm font-medium text-neutral-800">
-              {formatLongDate(log.log_date)}
+              <span className="capitalize">{formatLongDateWithWeekday(log.log_date)}</span>
             </span>
             <span className="text-xs text-neutral-500">
               {log.surah_from === log.surah_to

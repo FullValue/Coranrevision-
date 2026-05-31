@@ -18,6 +18,11 @@ const MOIS = [
   'juillet','août','septembre','octobre','novembre','décembre',
 ];
 
+// getDay() : 0=dimanche … 6=samedi.
+const JOURS = [
+  'dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi',
+];
+
 /** Ex. "mai 2026". */
 export function monthLabel(year: number, month0: number): string {
   return `${MOIS[month0]} ${year}`;
@@ -27,6 +32,14 @@ export function monthLabel(year: number, month0: number): string {
 export function formatLongDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   return `${d} ${MOIS[m - 1]} ${y}`;
+}
+
+/** Ex. "dimanche 31 mai 2026" à partir d'une chaîne 'YYYY-MM-DD'. */
+export function formatLongDateWithWeekday(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  // Construit en heure locale (mois 0-indexé) pour obtenir le bon jour.
+  const weekday = JOURS[new Date(y, m - 1, d).getDay()];
+  return `${weekday} ${d} ${MOIS[m - 1]} ${y}`;
 }
 
 /**
